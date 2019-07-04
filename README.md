@@ -63,8 +63,8 @@
  - Выполняем коммит изменений в ветку master
  
 ## Как запустить проект:
- - bastion_IP = 35.210.130.169
- - someinternalhost_IP = 10.132.0.3
+bastion_IP = 35.210.130.169
+someinternalhost_IP = 10.132.0.3
 
 ## Как проверить работоспособность:
  - Перейти по ссылке https://travis-ci.com/otus-devops-2019-05/azarkinivan_infra
