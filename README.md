@@ -4,48 +4,50 @@
 
 ## В процессе сделано:
 
- - Создаем ветку
+ - Создаем ветку  
+```
     git checkout -b cloud-bastion
- - Регистрируем уз в GCP
+```
+ - Регистрируем уз в GCP  
     https://cloud.google.com/free/
  - Создаем новый проект infra
  - Активируем GCE
- - Добавляем ssh-ключ:
+ - Добавляем ssh-ключ:  
     ssh-keygen -t rsa -f ~/.ssh/appuser -C appuser -P ""
  - Копируем ключ appuser.pub и вставляем в метаданные GCP
  - Создаем VM bastion и конфигурируем сеть согласно слайдам
- - Проверяем из локальной консоли подключение к ВМ1:
+ - Проверяем из локальной консоли подключение к ВМ1:  
     ssh -i ~/.ssh/appuser appuser@35.210.130.169
- - Создаем VM someinternalhost и конфигурируем сеть согласно слайдам, без публичного адреса
-    ssh -i ~/.ssh/appuser appuser@35.210.130.169 
-    ssh 10.132.0.3
+ - Создаем VM someinternalhost и конфигурируем сеть согласно слайдам, без публичного адреса  
+    ssh -i ~/.ssh/appuser appuser@35.210.130.169  
+    ssh 10.132.0.3  
     Permission denied (publickey).
  - Настраиваем ssh forwarding
  - Запускаем ssh agent:
-    eval `ssh-agent`
-    ssh-add -L
+    eval `ssh-agent`  
+    ssh-add -L  
     ssh-add ~/.ssh/appuser
- - Подлюкчаемся к bastion с включением ssh agent:
-    ssh -i ~/.ssh/appuser -A appuser@35.210.130.169
-    ssh 10.132.0.3
+ - Подлюкчаемся к bastion с включением ssh agent:  
+    ssh -i ~/.ssh/appuser -A appuser@35.210.130.169  
+    ssh 10.132.0.3  
     Успех!
- - Проверяем отсутсвеи приватных ключей на bastion:
+ - Проверяем отсутсвеи приватных ключей на bastion:  
     ls -la ~/.ssh/
- - Самостоятельная работа:
+ - Самостоятельная работа:  
     ssh -i ~/.ssh/appuser -A appuser@35.210.130.169 ssh 10.132.0.3
- - Добавляем ключ на bastion командой:
+ - Добавляем ключ на bastion командой:  
     ssh someinternalhost
- - Далее с локальной машины:
+ - Далее с локальной машины:  
     ssh -i ~/.ssh/appuser -A appuser@35.210.130.169 ssh someinternalhost
  - Создаем VPN сервер Pritunl
  - На bastion в настройках ВМ разрешаем http/https трафик
- - На bastion выполняем:
-    https://gist.github.com/Nklya/df07e99e63e4043e6a699060a7e30b66
+ - На bastion выполняем:  
+    https://gist.github.com/Nklya/df07e99e63e4043e6a699060a7e30b66  
     sudo bash setupvpn.sh
- - Переходим в Pritunl:
+ - Переходим в Pritunl:  
     https://35.210.130.169/setup
- - Выполняем:
-    sudo pritunl setup-key
+ - Выполняем:  
+    sudo pritunl setup-key  
     sudo pritunl default-password
  - Конфигугрируем согласно слайдам, добавляем орг., пользователя и сервер с привязкой к орг.
  - Запускаем сервер и запоминаем порт: 11124
@@ -53,17 +55,17 @@
  - Добавляем в теги сети правило vpn-11124
  - Устанавливаем openvpn client на домашний пк
  - Подкладываем *.ovpn конфиг, ранее скачанный с vpn-сервера
- - Осуществляем подключени используя уз:
-    test с PIN 621***
+ - Осуществляем подключени используя уз:  
+    test с PIN 621***  
     Успех!
- - Проверка подключения к внутреннему хосту someinternalhost:
+ - Проверка подключения к внутреннему хосту someinternalhost:  
     ssh - ~/.ssh/appuser appuser@10.132.0.3
- - Копируем setupvpn.sh на локальный хост:
+ - Копируем setupvpn.sh на локальный хост:  
     scp appuser@35.210.130.169:setupvpn.sh /home/iazarkin/otus/
  - Выполняем коммит изменений в ветку master
  
 ## Как запустить проект:
-bastion_IP = 35.210.130.169
+bastion_IP = 35.210.130.169  
 someinternalhost_IP = 10.132.0.3
 
 ## Как проверить работоспособность:
