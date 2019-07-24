@@ -1,0 +1,5 @@
+{
+"project_id": "gcp-project",
+"source_image_family": "example_image_family",
+"machine_type": "example_machine_type"
+}
