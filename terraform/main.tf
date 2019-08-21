@@ -8,8 +8,8 @@ provider "google" {
   version = "2.0.0"
 
   # ID проекта
-  project = "infra-244708"
-  region  = "europe-west1"
+  project = "${var.project}"
+  region  = "${var.region}"
 }
 
 resource "google_compute_instance" "app" {
@@ -21,13 +21,13 @@ resource "google_compute_instance" "app" {
  # определение загрузочного диска
   boot_disk {
     initialize_params {
-      image = "reddit-base-1563911713"
+      image = "${var.disk_image}"
     }
 }
 
   metadata {
     # путь до публичного ключа
-    ssh-keys = "appuser:${file("~/.ssh/appuser.pub")}"
+    ssh-keys = "appuser:${file(var.public_key_path)}"
 }
 
   # определение сетевого интерфейса
@@ -37,6 +37,24 @@ resource "google_compute_instance" "app" {
 
     # использовать ephemeral IP для доступа из Интернет
     access_config {}
+  }
+
+  connection {
+    type  = "ssh"
+    user  = "appuser"
+    agent = false
+
+    # путь до приватного ключа
+    private_key = "${file("~/.ssh/appuser")}"
+  }
+
+  provisioner "file" {
+    source      = "files/puma.service"
+    destination = "/tmp/puma.service"
+  }
+
+  provisioner "remote-exec" {
+    script = "files/deploy.sh"
   }
 }
 
