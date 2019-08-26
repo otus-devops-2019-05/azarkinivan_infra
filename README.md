@@ -1,3 +1,30 @@
+## Выполнено ДЗ №6
+
+ - Основное ДЗ
+
+## В процессе сделано:
+
+- Проверен образ, созданный с помощью packer в HW-5
+- Установлен и инициализирован terraform
+- Создан шаблон main.tf и заполнен секциями reosurse и provisioners, согласно слайдам
+- Добавлены скрипты для провижининга
+- Выполнена параметризация
+- Отформатированы конфигурационные файлы terraform
+
+## Как запустить проект:
+```
+/usr/local/bin/terraform init
+/usr/local/bin/terraform plan
+/usr/local/bin/terraform apply -auto-approve=true
+```
+## Как проверить работоспособность:
+По ссылке:
+```
+https://travis-ci.com/otus-devops-2019-05/azarkinivan_infra/
+```
+## PR checklist
+Выставил label - terraform и terraform-1
+
 ## Выполнено ДЗ №5
 
  - Основное ДЗ
