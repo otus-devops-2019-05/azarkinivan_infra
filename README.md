@@ -1,3 +1,35 @@
+## Выполнено ДЗ №8
+
+ - Основное ДЗ
+
+## В процессе сделано:
+
+- Установлен easy_install
+- Установлен ansible, requirements.txt не сработал - установилась версия 2.8.x
+- Выполнил ручную установку ansible 2.4.x
+- Добавлены различные конфиги: inventory, ansible.cfg, inventory.yml
+- Проведены эксперименты с командами, различными модулями (ex.: command, shell...)
+- Создан playbook clone.yml, выполнены команды:
+```
+ansible-playbook clone.yml
+ansible app -m command -a 'rm -rf ~/reddit'
+ansible-playbook clone.yml
+После выполнения такой последовательности был создан, затем удален склонированный репозиторий reddit, а далее снова добавлен, как новый. 
+Поэтому статус changed=1.
+```
+
+## Как запустить проект:
+```
+ansible-playbook clone.yml
+```
+## Как проверить работоспособность:
+По ссылке:
+```
+https://travis-ci.com/otus-devops-2019-05/azarkinivan_infra/
+```
+## PR checklist
+Выставил label - ansible-1 и ansible
+
 ## Выполнено ДЗ №7
 
  - Основное ДЗ
