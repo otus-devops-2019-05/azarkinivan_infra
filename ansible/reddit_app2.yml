@@ -1,9 +1,9 @@
 ---
 - name: Configure MongoDB 
   hosts: db
-  vars:
   tags: db-tag
   become: true
+  vars:
     mongo_bind_ip: 0.0.0.0
   tasks:
     - name: Change mongo config file
@@ -22,7 +22,7 @@
   tags: app-tag
   become: true
   vars:
-   db_host: 10.132.15.194
+   db_host: 10.132.15.196
   tasks:
     - name: Add unit file for Puma
       copy:
@@ -43,4 +43,3 @@
   handlers:
   - name: reload puma
     systemd: name=puma state=restarted
-
