@@ -1,5 +1,5 @@
 ---
-- name: Configure MongoDB 
+- name: Configure MongoDB
   hosts: db
   tags: db-tag
   become: true
@@ -56,7 +56,7 @@
       notify: restart puma
 
     - name: Bundle install
-      bundler: 
+      bundler:
         state: present
         chdir: /home/appuser/reddit
 
