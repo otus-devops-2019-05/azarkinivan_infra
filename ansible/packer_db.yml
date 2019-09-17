@@ -23,4 +23,3 @@
     systemd:
       name: mongod
       enabled: yes
-

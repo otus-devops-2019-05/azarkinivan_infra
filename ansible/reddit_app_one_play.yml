@@ -1,7 +1,7 @@
 ---
 - name: Configure hosts & deploy application
   hosts: all
-  vars: 
+  vars:
     mongo_bind_ip: 0.0.0.0
     db_host: 10.132.15.196
   tasks:
@@ -40,19 +40,18 @@
         version: monolith
       tags: deploy-tag
       notify: reload puma
-    
+
     - name: Bundle install
-      bundler: 
+      bundler:
         state: present
         chdir: /home/appuser/reddit
       tags: deploy-tag
 
-  handlers: 
+  handlers:
     - name: restart mongod
       become: true
       service: name=mongod state=restarted
-    
+
     - name: reload puma
       become: true
       systemd: name=puma state=reloaded
-
