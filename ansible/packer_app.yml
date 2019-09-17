@@ -1,0 +1,13 @@
+---
+- name: install ruby and bundle
+  hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+    - name: Install packages with_items
+      apt: "name={{ item }} state=present"
+      with_items:
+        - ruby-full
+        - ruby-bundler 
+        - build-essential
+
