@@ -1,3 +1,28 @@
+## Выполнено ДЗ №9
+
+ - Основное ДЗ
+
+## В процессе сделано:
+
+ - Создали шаблоны
+ - Создали один playbook много задач
+ - Создали один playbook несколько сценариев
+ - Создали один playbook для запуска дургих playbook-ов
+ - Заменили shell-provisioning в Packer на ansible playbook
+
+## Как запустить проект:
+```
+ansible-playbook site.yml
+```
+## Как проверить работоспособность:
+По ссылке:
+```
+https://travis-ci.com/otus-devops-2019-05/azarkinivan_infra/
+```
+## PR checklist
+Выставил label - ansible-2
+
+
 ## Выполнено ДЗ №8
 
  - Основное ДЗ
